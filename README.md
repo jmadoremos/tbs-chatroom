@@ -1,1 +1,1 @@
-# thebibiseries
+# The Bibi Series | Chatroom

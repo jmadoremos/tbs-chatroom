@@ -6,12 +6,7 @@ language: node_js
 
 node_js:
   - "lts/*"
-  - "9"
 
 deploy:
   provider: azure_web_apps
   verbose: true
-
-after_deploy:
-  - npm install
-  - npm start -s

@@ -1,5 +1,3 @@
-'use strict'
-
 import express from 'express';
 import open from 'open';
 import webpack from 'webpack';
@@ -7,8 +5,7 @@ import config from '../webpack.config.dev';
 import compression from 'compression';
 import chalk from 'chalk';
 
-import IndexRouter from '../src/web/index/indexRouter';
-import UsersRouter from '../src/api/users/usersRouter';
+import IndexRouter from '../app/web/index/index.router';
 
 /* eslint-disable no-console */
 
@@ -28,7 +25,6 @@ app.use(require('webpack-dev-middleware')(compiler, { publicPath: config.output.
 // handling routes using express.Router makes passing paths
 // easier and cleaner
 app.use('/', IndexRouter);
-app.use('/api/users', UsersRouter);
 
 // finally, let express listen to a specific port
 // to present our web application

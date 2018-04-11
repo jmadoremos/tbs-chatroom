@@ -1,0 +1,48 @@
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "jquery": true,
+    "node": true,
+    "mocha": true,
+    "webextensions": true
+  },
+  "globals": {
+    "angular": true,
+    "_": true
+  },
+  "rules": {
+    "array-bracket-spacing": "error",
+    "comma-dangle": "warn",
+    "eqeqeq": "error",
+    "import/default": "off",
+    "indent": [ "error", 2 ],
+    "init-declarations": "error",
+    "linebreak-style": [ "error", "windows" ],
+    "no-console": "off",
+    "no-debugger": "warn",
+    "no-extra-parens": "warn",
+    "no-extra-semi": "error",
+    "no-irregular-whitespace": "warn",
+    "no-multiple-empty-lines": "error",
+    "no-undef": "error",
+    "no-undef-init": "error",
+    "no-unused-vars": "warn",
+    "no-use-before-define": "warn",
+    "object-curly-newline": "error",
+    "quotes": [ "error", "single" ],
+    "semi": "error",
+    "strict": [ "error", "safe" ],
+    "spaced-comment": "warn",
+    "space-in-parens": "warn"
+  }
+}

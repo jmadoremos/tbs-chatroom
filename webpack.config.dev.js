@@ -1,30 +1,17 @@
-'use strict'
-
 import path from 'path';
 
 export default {
-  devtool: 'inline-source-map',
-  entry: [
-    path.resolve(__dirname, 'app/web/index/index.view')
-  ],
-  target: 'web',
+  entry: './app/web/index/index.viewModel.js',
+  mode: 'development',
   output: {
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'app/web/index'),
-    publicPath: '/',
-    filename: 'bundle.js'
+    publicPath: '/'
   },
-  plugins: [],
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        loaders: ['babel-loader'],
-        exclude: /node_modules/
-      },
-      {
-        test: /\.css$/,
-        loaders: ['style-loader','css-loader']
-      }
-    ]
+    rules: [{
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader']
+    }]
   }
-}
+};

@@ -16,11 +16,7 @@ before_script:
 script:
   - npm test
 
-deploy:
-  provider: azure_web_apps
-  verbose: true
-
-after_deploy:
+after_script:
   - docker build -t jmadoremos/tbs-chatroom -f ./Dockerfile .
   - docker tag jmadoremos/tbs-chatroom jmadoremos/tbs-chatroom:$(git rev-parse --short HEAD)
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"

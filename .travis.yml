@@ -20,6 +20,6 @@ deploy:
 
 after_deploy:
   - docker build -t jmadoremos/tbs-chatroom -f ./Dockerfile .
-  - docker tag jmadoremos/tbs-chatroom jmadoremos/tbs-chatroom:$(git rev-parse --short HEAD);
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-  - docker push jmadoremos/tbs-chatroom;
+  - docker tag jmadoremos/tbs-chatroom jmadoremos/tbs-chatroom:$(git rev-parse --short HEAD)
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push jmadoremos/tbs-chatroom

@@ -6,9 +6,8 @@
   "scripts": {
     "lint": "esw webpack.config.* app build --color",
     "lint:watch": "npm run lint -- --watch",
-    "prestart": "npm-run-all --parallel test-security lint test",
-    "start": "babel-node build/server-start.js",
-    "pretest": "npm-run-all --parallel test-security lint",
+    "start": "npm-run-all --parallel test-security lint:watch test start-server",
+    "start-server": "babel-node build/server-start.js",
     "test": "mocha build/test-config.js \"app/**/*.spec.js\"",
     "test:watch": "npm run test -- --watch",
     "test-security": "nsp check"
@@ -29,6 +28,7 @@
     "babel-loader": "^7.1.4",
     "babel-preset-latest": "^6.24.1",
     "babel-register": "^6.26.0",
+    "bootstrap-material-design-icons": "^2.2.0",
     "chai": "^4.1.2",
     "cluster": "^0.7.7",
     "compression": "^1.7.2",
@@ -40,6 +40,7 @@
     "npm-run-all": "^4.1.2",
     "nsp": "^3.2.1",
     "open": "0.0.5",
+    "socket.io": "^2.1.0",
     "style-loader": "^0.20.3",
     "webpack": "^4.5.0",
     "webpack-dev-middleware": "^3.1.2",

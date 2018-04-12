@@ -1,0 +1,78 @@
+.message-container {
+  max-height: 93%;
+  padding-right: 0;
+}
+
+.message-contrainer,
+.message-contrainer .form-group {
+  padding-right: 10px;
+}
+
+.message-container .form-group {
+  margin: 0;
+  padding-top: 15px;
+}
+
+.message-container .form-group label {
+  top: 10px;
+}
+
+.message-container .form-group.is-focused label {
+  top: -8px;
+  left: 15px;
+}
+
+.message-container .form-group.is-filled label {
+  visibility: hidden;
+}
+
+.message-container .form-group button {
+  padding-right: 15px;
+}
+
+.message-feed {
+  background-color: rgb(200, 214, 229);
+  height: 96%;
+  overflow-y: scroll;
+  padding-bottom: 20px;
+  padding-top: 30px;
+}
+
+.message-feed .card {
+  margin-bottom: 10px;
+  max-width: 75%;
+}
+
+.message-feed .card-title {
+  font-size: 12px !important;
+  margin-bottom: 5px;
+}
+
+.message-feed .card-body {
+  padding: 12px;
+}
+
+.message-feed-me {
+  margin-right: 30px;
+}
+
+.message-feed-me .card {
+  background-color: rgb(87, 101, 116);
+  color: white;
+  float: right;
+}
+
+.message-feed-me .card-title {
+  color: rgb(200, 214, 229);
+  text-align: right;
+}
+
+.message-feed-them {
+  margin-left: 30px;
+}
+
+.message-feed-them .card {
+  background-color: rgb(10, 189, 227);
+  color: white;
+  float: left;
+}

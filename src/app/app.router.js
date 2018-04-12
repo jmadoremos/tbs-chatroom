@@ -6,7 +6,7 @@ let router = express.Router();
 
 // we define the route for GET requests
 let getRoute = function(req, res) {
-  res.sendFile(path.join(__dirname, './index.view.html'));
+  res.sendFile(path.join(__dirname, './index/index.view.html'));
   res.flush();
 };
 

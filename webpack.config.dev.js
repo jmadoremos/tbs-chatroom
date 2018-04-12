@@ -1,11 +1,11 @@
 import path from 'path';
 
 export default {
-  entry: './app/web/index/index.viewModel.js',
+  entry: './src/app/app.bundleConfig.js',
   mode: 'development',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'app/web/index'),
+    filename: 'app.bundle.js',
+    path: path.resolve(__dirname, 'src/app/index'),
     publicPath: '/'
   },
   module: {

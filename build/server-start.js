@@ -5,7 +5,7 @@ import config from '../webpack.config.dev';
 import compression from 'compression';
 import chalk from 'chalk';
 
-import IndexRouter from '../app/web/index/index.router';
+import AppRouter from '../src/app/app.router';
 
 /* eslint-disable no-console */
 
@@ -24,7 +24,7 @@ app.use(require('webpack-dev-middleware')(compiler, { publicPath: config.output.
 
 // handling routes using express.Router makes passing paths
 // easier and cleaner
-app.use('/', IndexRouter);
+app.use('/', AppRouter);
 
 // finally, let express listen to a specific port
 // to present our web application

@@ -1,0 +1,21 @@
+<div class="message-feed" scroll-glue>
+  <div class="clearfix" ng-repeat="e in msg.feed track by $index" ng-class="e.sender ? 'message-feed-me' : 'message-feed-them'">
+      <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">{{e.name}}</h6>
+            <span class="card-text">{{e.message}}</span>
+        </div>
+      </div>
+  </div>
+</div>
+<form>
+  <div class="form-group row fill-x">
+    <div class="col-md-10">
+      <label for="messageFieldValue" class="bmd-label-floating">Enter your message here</label>
+      <input type="text" class="form-control" name="messageFieldValue" ng-model="msg.fieldValue" autofocus on-enter="msg.submitMessage()" />
+    </div>
+    <div class="col-md-2">
+      <button type="button" tabindex="0" class="btn btn-raised btn-primary fill-x" ng-click="msg.submitMessage()">Submit</button>
+    </div>
+  </div>
+</form>

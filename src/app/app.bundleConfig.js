@@ -1,9 +1,15 @@
 // styles
 import './index/index.style.css';
-import './messages/messages.style.css';
 
-// js
+// app module, objects, directives
 import './app.module';
 import './_utilities/message.object';
 import './_utilities/onEnter.directive';
-import './messages/messages.controller';
+
+// messages
+import './messages/messages.component.css';
+import './messages/messages.component.js';
+
+// people
+import './people/people.component.css';
+import './people/people.component.js';

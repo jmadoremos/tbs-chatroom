@@ -21,11 +21,6 @@
   width: 100%;
 }
 
-.people-container {
-  background-color: rgb(84, 160, 255);
-  border-left: 7px solid rgb(46, 134, 222);
-}
-
 html,
 body {
   height: 100%;

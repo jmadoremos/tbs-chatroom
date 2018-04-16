@@ -1,18 +1,24 @@
 import express from 'express';
+import socketIO from 'socket.io';
+import http from 'http';
 import open from 'open';
 import webpack from 'webpack';
 import config from '../webpack.config.dev';
 import compression from 'compression';
 import chalk from 'chalk';
 
+import SocketConfig from './socket-config';
 import AppRouter from '../src/app/app.router';
-
-/* eslint-disable no-console */
 
 const port = 9428;
 const compiler = webpack(config);
-const app = express();
 const pid = process.pid;
+const app = express();
+const server = http.Server(app);
+const io = socketIO(server, {
+  serveClient: false,
+  wsEngine: 'ws'
+});
 
 // compressing all request will save bandwith and induce
 // faster initial load
@@ -26,13 +32,17 @@ app.use(require('webpack-dev-middleware')(compiler, { publicPath: config.output.
 // easier and cleaner
 app.use('/', AppRouter);
 
+// implementing explicit socket calls and handling them on
+// a separate module will lessen the complexity of this module
+io.on('connection', SocketConfig.onConnect);
+
 // finally, let express listen to a specific port
 // to present our web application
-app.listen(port, function(err) {
+server.listen(port, (err) => {
   if (err) {
     console.log(chalk.red(err));
   } else {
     console.log(chalk.yellow(`Running a new process at ${pid}`));
-    open('http://localhost:' + port);
+    open(`http://localhost:${port}`);
   }
 });

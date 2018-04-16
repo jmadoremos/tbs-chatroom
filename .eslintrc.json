@@ -17,8 +17,9 @@
     "webextensions": true
   },
   "globals": {
+    "_": true,
     "angular": true,
-    "_": true
+    "io": true
   },
   "rules": {
     "array-bracket-spacing": "error",

@@ -1,32 +1,32 @@
-.message-container {
+messages-component {
   max-height: 93%;
   padding-right: 0;
 }
 
-.message-contrainer,
-.message-contrainer .form-group {
+messages-component,
+messages-component .form-group {
   padding-right: 10px;
 }
 
-.message-container .form-group {
+messages-component .form-group {
   margin: 0;
   padding-top: 15px;
 }
 
-.message-container .form-group label {
+messages-component .form-group label {
   top: 10px;
 }
 
-.message-container .form-group.is-focused label {
+messages-component .form-group.is-focused label {
   top: -8px;
   left: 15px;
 }
 
-.message-container .form-group.is-filled label {
+messages-component .form-group.is-filled label {
   visibility: hidden;
 }
 
-.message-container .form-group button {
+messages-component .form-group button {
   padding-right: 15px;
 }
 

@@ -1,6 +1,6 @@
 messages-component {
   max-height: 93%;
-  padding-right: 0;
+  padding-right: 0 !important;
 }
 
 messages-component,

@@ -22,13 +22,29 @@ let getImageRoute = function(req, res) {
   res.flush();
 };
 
+let getScriptRoute = function(req, res) {
+  var nodeModule = req.params.nodeModule;
+  var moduleDir = req.params.moduleDir || '';
+  var moduleScript = req.params.moduleScript;
+  if (moduleDir !== '') {
+    res.sendFile(path.join(__dirname, `../../node_modules/${nodeModule}/${moduleDir}/${moduleScript}`));
+  } else {
+    res.sendFile(path.join(__dirname, `../../node_modules/${nodeModule}/${moduleScript}`));
+  }
+  res.flush();
+};
+
 /* defining all Index routes here allows for a scalable
    and modular pattern configuration */
 router.route('/')
   .get(getIndexRoute);
 router.route('/:component.component.html')
   .get(getComponentRoute);
-router.route('/image/:image')
+router.route('/images/:image')
   .get(getImageRoute);
+router.route('/scripts/:nodeModule/:moduleDir/:moduleScript')
+  .get(getScriptRoute);
+router.route('/scripts/:nodeModule/:moduleScript')
+  .get(getScriptRoute);
 
 module.exports = router;

@@ -2,30 +2,50 @@
 
   /* defining the controller beforehand ensures that the function
      is callable anywhere in this IFFE scope */
-  function controller(Message) {
+  function MessageController(Message, SessionService, $scope) {
     var msg = this;
-    msg.feed = [];
     msg.fieldValue = '';
+    msg.feed = [];
     msg.submitMessage = function() {
-      if (msg.fieldValue && msg.fieldValue !== '') {
-        // package values as objects
-        var message = new Message({
-          name: 'james.m.a.adoremos',
-          message: msg.fieldValue || ''
-        });
-        // add to feed
-        msg.feed.push(message);
-        // empty field for new session
+      if (SessionService.isLoggedIn()) {
+        var message = new Message({ name: SessionService.user().name, message: msg.fieldValue });
+        SessionService.sendMessage(message);
+        addMessage(message);
         msg.fieldValue = '';
       }
     };
+    msg.isLoggedIn = function() {
+      return SessionService.isLoggedIn();
+    };
+
+    function addMessage(obj) {
+      if (typeof obj !== 'object' || obj === null) {
+        obj = {};
+      }
+      obj.message = obj.message || '';
+      if (typeof obj.message === 'string') {
+        obj.message.trim();
+      }
+      if (obj.message !== '') {
+        msg.feed.push(obj);
+      }
+    }
+
+    $scope.$on('disconnect', () => {
+      msg.feed = [];
+    });
+
+    $scope.$on('new-message', (event, args) => {
+      var message = args.message;
+      msg.feed.push(message);
+    });
+
   }
 
   /* finalize component setup */
-  angular.module('tbsChatroomApp')
-    .component('messagesComponent', {
-      templateUrl: 'messages.component.html',
-      controller: controller,
-      controllerAs: 'msg'
-    });
+  angular.module('tbsChatroomApp').component('messagesComponent', {
+    templateUrl: 'messages.component.html',
+    controller: MessageController,
+    controllerAs: 'msg'
+  });
 })();

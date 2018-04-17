@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/jmadoremos/tbs-chatroom#readme",
   "dependencies": {
+    "angular-md5": "^0.1.10",
     "babel-cli": "^6.26.0",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",

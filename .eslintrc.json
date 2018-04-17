@@ -24,7 +24,7 @@
   "rules": {
     "array-bracket-spacing": "error",
     "comma-dangle": "warn",
-    "eqeqeq": "error",
+    "eqeqeq": "warn",
     "import/default": "off",
     "indent": [ "error", 2 ],
     "init-declarations": "error",
@@ -39,7 +39,7 @@
     "no-unused-vars": "warn",
     "no-use-before-define": "warn",
     "object-curly-newline": "error",
-    "quotes": [ "error", "single" ],
+    "quotes": [ "warn", "single" ],
     "semi": "error",
     "strict": [ "error", "safe" ],
     "spaced-comment": "warn",

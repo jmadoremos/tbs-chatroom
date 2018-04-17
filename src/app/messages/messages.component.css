@@ -50,8 +50,8 @@ messages-component .form-group button {
 
 .message-feed .sender-img-left img,
 .message-feed .sender-img-right img {
-  height: 64px;
-  width: 64px;
+  height: 50px;
+  width: 50px;
 }
 
 .message-feed .card {

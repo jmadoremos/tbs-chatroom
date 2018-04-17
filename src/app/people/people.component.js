@@ -20,9 +20,8 @@
     };
 
     ppl.setUserDetails = function() {
-      ppl.userName = ppl.userName.trim();
-      ppl.userEmail = ppl.userEmail.trim();
-      if (ppl.userName !== '' && ppl.userEmail !== '') {
+      ppl.userEmail = ppl.userEmail.trim().toLocaleLowerCase();
+      if (ppl.userEmail !== '') {
         ppl.userEmailHash = md5.createHash(ppl.userEmail);
         SessionService.setUserDetails({ name: ppl.userName, email: ppl.userEmail, emailHash: ppl.userEmailHash });
       }

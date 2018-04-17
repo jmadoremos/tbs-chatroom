@@ -1,15 +1,18 @@
 function SocketSession() {
+
   var mUserDetails = {
     id: '',
     name: '',
-    email: ''
+    email: '',
+    emailHash: ''
   };
 
   function close() {
     mUserDetails = {
       id: '',
       name: '',
-      email: ''
+      email: '',
+      emailHash: ''
     };
     return mUserDetails;
   }
@@ -21,6 +24,7 @@ function SocketSession() {
     mUserDetails.id = obj.id || '';
     mUserDetails.name = obj.name || 'anonymous';
     mUserDetails.email = obj.email || '';
+    mUserDetails.emailHash = obj.emailHash || '';
   }
 
   return {
@@ -28,6 +32,7 @@ function SocketSession() {
     setUserDetails: setUserDetails,
     user: mUserDetails
   };
+
 }
 
 module.exports = new SocketSession();

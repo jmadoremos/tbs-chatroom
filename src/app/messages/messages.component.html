@@ -1,5 +1,8 @@
 <div class="message-feed" scroll-glue>
   <div class="clearfix" ng-repeat="e in msg.feed track by $index" ng-class="e.sender ? 'message-feed-me' : 'message-feed-them'">
+      <div ng-class="e.sender ? 'sender-img-right' : 'sender-img-left'">
+          <img src="https://www.gravatar.com/avatar/{{e.emailHash}}" alt="profile" class="rounded-circle mx-auto d-block" />
+      </div>
       <div class="card">
         <div class="card-body">
             <h6 class="card-title">{{e.name}}</h6>

@@ -14,6 +14,7 @@
       // set values to fields
       this.name = obj.name || 'anonymous';
       this.sender = typeof obj.sender === 'boolean' ? obj.sender : true;
+      this.emailHash = obj.emailHash || '';
       this.dateTime = obj.dateTime || new Date().getUTCDate();
       this.message = obj.message || '';
 

@@ -38,6 +38,22 @@ messages-component .form-group button {
   padding-top: 30px;
 }
 
+.message-feed .sender-img-left {
+  float: left;
+  margin-right: 10px;
+}
+
+.message-feed .sender-img-right {
+  float: right;
+  margin-left: 10px;
+}
+
+.message-feed .sender-img-left img,
+.message-feed .sender-img-right img {
+  height: 64px;
+  width: 64px;
+}
+
 .message-feed .card {
   margin-bottom: 10px;
   max-width: 75%;

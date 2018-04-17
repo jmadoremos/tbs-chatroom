@@ -23,7 +23,8 @@
 
     msg.submitMessage = function() {
       if (SessionService.isLoggedIn()) {
-        var message = new Message({ name: SessionService.user().name, message: msg.fieldValue });
+        var userDetails = SessionService.user();
+        var message = new Message({ name: userDetails.name, emailHash: userDetails.emailHash, message: msg.fieldValue });
         SessionService.sendMessage(message);
         addMessage(message);
         msg.fieldValue = '';

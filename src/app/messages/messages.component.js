@@ -4,19 +4,9 @@
      is callable anywhere in this IFFE scope */
   function MessageController(Message, SessionService, $scope) {
     var msg = this;
+
     msg.fieldValue = '';
     msg.feed = [];
-    msg.submitMessage = function() {
-      if (SessionService.isLoggedIn()) {
-        var message = new Message({ name: SessionService.user().name, message: msg.fieldValue });
-        SessionService.sendMessage(message);
-        addMessage(message);
-        msg.fieldValue = '';
-      }
-    };
-    msg.isLoggedIn = function() {
-      return SessionService.isLoggedIn();
-    };
 
     function addMessage(obj) {
       if (typeof obj !== 'object' || obj === null) {
@@ -30,6 +20,18 @@
         msg.feed.push(obj);
       }
     }
+
+    msg.submitMessage = function() {
+      if (SessionService.isLoggedIn()) {
+        var message = new Message({ name: SessionService.user().name, message: msg.fieldValue });
+        SessionService.sendMessage(message);
+        addMessage(message);
+        msg.fieldValue = '';
+      }
+    };
+    msg.isLoggedIn = function() {
+      return SessionService.isLoggedIn();
+    };
 
     $scope.$on('disconnect', () => {
       msg.feed = [];

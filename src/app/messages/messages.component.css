@@ -1,9 +1,16 @@
-messages-component {
-  max-height: 93%;
-  padding-right: 0 !important;
+@media only screen and (min-width: 720px) {
+  messages-component {
+    max-height: 93%;
+    padding-right: 0 !important;
+  }
 }
 
-messages-component,
+@media only screen and (max-width: 720px) {
+  messages-component {
+    padding-right: 15px !important;
+  }
+}
+
 messages-component .form-group {
   padding-right: 10px;
 }

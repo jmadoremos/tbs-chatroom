@@ -10,9 +10,9 @@
     var mSessionStarted = false;
 
     socket.on('new-message', (data) => {
-      var message = new Message(data);
-      message.sender = false;
-      $rootScope.$broadcast('new-message', { message });
+      var messagePackage = new Message(data);
+      messagePackage.sender = false;
+      $rootScope.$broadcast('new-message', { messagePackage });
     });
 
     function setUserDetails(obj) {

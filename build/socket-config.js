@@ -1,5 +1,4 @@
 import chalk from 'chalk';
-import SocketSession from './socket-session';
 
 function SocketConfig() {
   function onConnect(socket) {
@@ -7,12 +6,20 @@ function SocketConfig() {
 
     socket.on('set-user', (obj) => {
       if (!mIsAdded) {
-        obj.id = socket.id || '';
-        SocketSession.setUserDetails(obj);
+        socket.name = obj.name;
+        socket.email = obj.email;
+        socket.emailHash = obj.emailHash;
         mIsAdded = true;
 
+        // inform other clients
+        socket.broadcast.emit('new-user', {
+          name: socket.name,
+          email: socket.email,
+          emailHash: socket.emailHash
+        });
+
         // log
-        console.log(chalk.green(`${SocketSession.user.name} has connected`));
+        console.log(chalk.green(`${socket.name} has connected`));
       }
     });
 
@@ -20,22 +27,23 @@ function SocketConfig() {
       if (mIsAdded) {
         // inform other clients
         socket.broadcast.emit('new-message', {
-          name: SocketSession.user.name,
+          name: socket.name,
+          email: socket.email,
+          emailHash: socket.emailHash,
           message: obj.message
         });
 
         // log
-        console.log(chalk.green(`${SocketSession.user.name} has sent a message "${obj.message}"`));
+        console.log(chalk.green(`${socket.name} has sent a message "${obj.message}"`));
       }
     });
 
     socket.on('disconnect', () => {
       if (mIsAdded) {
-        SocketSession.close();
         mIsAdded = false;
 
         // log
-        console.log(chalk.green(`${SocketSession.user.name} has disconnected`));
+        console.log(chalk.green(`${socket.name} has disconnected`));
       }
     });
   }

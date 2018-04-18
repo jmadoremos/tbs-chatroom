@@ -39,8 +39,7 @@
     });
 
     $scope.$on('new-message', (event, args) => {
-      var message = args.message;
-      msg.feed.push(message);
+      msg.feed.push(args.messagePackage);
     });
 
   }

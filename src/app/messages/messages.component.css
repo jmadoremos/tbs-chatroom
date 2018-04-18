@@ -99,3 +99,13 @@ messages-component .form-group button {
   color: white;
   float: left;
 }
+
+.message-feed-typing {
+  bottom: 30px;
+  color: rgb(36, 36, 36);
+  font-size: 12px;
+  font-style: italic;
+  margin-left: 10px;
+  position: absolute;
+  visibility: hidden;
+}

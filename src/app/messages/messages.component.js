@@ -48,6 +48,7 @@
        update the feed view accordingly */
     $scope.$on('disconnect', () => {
       msg.feed = [];
+      $scope.$apply();
     });
 
     /* listening to the "new-message" broadcast will allow us to

@@ -1,6 +1,6 @@
 @media only screen and (min-width: 720px) {
   messages-component {
-    max-height: 93%;
+    max-height: 75%;
     padding-right: 0 !important;
   }
 }

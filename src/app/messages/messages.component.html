@@ -16,7 +16,7 @@
   <div class="form-group row fill-x">
     <div class="col-md-10">
       <label for="messageFieldValue" class="bmd-label-floating">Enter your message here</label>
-      <input type="text" class="form-control" name="messageFieldValue" ng-model="msg.fieldValue" autofocus on-enter="msg.submitMessage()" />
+      <input type="text" class="form-control" name="messageFieldValue" autocomplete="off" ng-model="msg.fieldValue" autofocus on-enter="msg.submitMessage()" />
     </div>
     <div class="col-md-2">
       <button type="button" tabindex="0" class="btn btn-raised btn-primary fill-x" ng-click="msg.submitMessage()">Submit</button>

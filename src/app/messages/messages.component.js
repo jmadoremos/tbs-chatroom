@@ -21,6 +21,7 @@
       }
       if (typeof obj ==='object' && obj.message !== '') {
         msg.feed.push(obj);
+        $scope.$apply();
       }
     }
 
@@ -31,9 +32,9 @@
       if (SessionService.isLoggedIn()) {
         var userDetails = SessionService.user();
         var message = new Message({ name: userDetails.name, emailHash: userDetails.emailHash, message: msg.fieldValue });
+        msg.fieldValue = '';
         SessionService.sendMessage(message);
         addMessage(message);
-        msg.fieldValue = '';
       }
     };
 
@@ -52,7 +53,7 @@
     /* listening to the "new-message" broadcast will allow us to
        upduate our view when other users sends a message */
     $scope.$on('new-message', (event, args) => {
-      msg.feed.push(args.messagePackage);
+      addMessage(args.messagePackage);
     });
 
   }

@@ -2,12 +2,6 @@ people-component {
   background-color: rgb(84, 160, 255);
 }
 
-@media only screen and (min-width: 720px) {
-  people-component {
-    border-left: 7px solid rgb(46, 134, 222);
-  }
-}
-
 @media only screen and (max-width: 720px) {
   people-component {
     height: 20%;

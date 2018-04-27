@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "type": "shell",
+    "echoCommand": true,
+    "presentation": {
+        "echo": true,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared"
+    },
+    "tasks":[
+        {
+            "label": "Install NPM Packages",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "npm",
+            "args": [ "i" ],
+        }
+    ]
+}

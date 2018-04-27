@@ -38,6 +38,34 @@ function SocketConfig() {
       }
     });
 
+    socket.on('start-typing', () => {
+      if (mIsAdded) {
+        // inform other clients
+        socket.broadcast.emit('start-typing', {
+          name: socket.name,
+          email: socket.email,
+          emailHash: socket.emailHash
+        });
+
+        // log
+        console.log(chalk.green(`${socket.name} is typing...`));
+      }
+    });
+
+    socket.on('stop-typing', () => {
+      if (mIsAdded) {
+        // inform other clients
+        socket.broadcast.emit('stop-typing', {
+          name: socket.name,
+          email: socket.email,
+          emailHash: socket.emailHash
+        });
+
+        // log
+        console.log(chalk.green(`${socket.name} stopped typing...`));
+      }
+    });
+
     socket.on('disconnect', () => {
       if (mIsAdded) {
         mIsAdded = false;

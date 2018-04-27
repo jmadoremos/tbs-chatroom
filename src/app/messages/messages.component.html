@@ -10,13 +10,13 @@
         </div>
       </div>
   </div>
-  <div class="message-feed-typing">James has started typing...</div>
+  <div class="message-feed-typing">{{msg.typingMessage}}</div>
 </div>
 <form ng-show="msg.isLoggedIn()">
   <div class="form-group row fill-x">
     <div class="col-md-10">
       <label for="messageFieldValue" class="bmd-label-floating">Enter your message here</label>
-      <input type="text" class="form-control" name="messageFieldValue" autocomplete="off" ng-model="msg.fieldValue" autofocus on-enter="msg.submitMessage()" />
+      <input type="text" class="form-control" name="messageFieldValue" autocomplete="off" autofocus ng-model="msg.fieldValue" on-enter="msg.submitMessage()" ng-keypress="msg.typing()" />
     </div>
     <div class="col-md-2">
       <button type="button" tabindex="0" class="btn btn-raised btn-primary fill-x" ng-click="msg.submitMessage()">Submit</button>

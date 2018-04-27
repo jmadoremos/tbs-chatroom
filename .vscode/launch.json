@@ -13,8 +13,8 @@
             "runtimeArgs": [],
             "cwd": "${workspaceFolder}",
             "protocol": "inspector",
-            "console": "internalConsole",
-            "preLaunchTask": "Install NPM Packages"
+            "console": "internalConsole"
+            // "preLaunchTask": "Install NPM Packages"
         }
     ]
 }

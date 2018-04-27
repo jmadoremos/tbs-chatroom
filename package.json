@@ -4,6 +4,8 @@
   "description": "The Bibi Series | Chatroom",
   "private": true,
   "scripts": {
+    "deploy": "now -A now.json deploy .",
+    "deploy-down": "now rm TheBibiSeries",
     "lint": "esw webpack.config.* src build --color",
     "lint:watch": "npm run lint -- --watch",
     "start": "npm-run-all --parallel test-security lint:watch test start-server",
@@ -48,6 +50,7 @@
     "eslint-plugin-import": "^2.10.0",
     "eslint-watch": "^3.1.4",
     "mocha": "^5.0.5",
+    "now": "^11.1.7",
     "style-loader": "^0.20.3",
     "webpack": "^4.5.0",
     "webpack-dev-middleware": "^3.1.2",

@@ -19,7 +19,7 @@
     </div>
   </form>
 </div>
-<div class="people-feed">
+<div class="people-feed" ng-show="ppl.feed.length > 0">
   <h6>Current users:</h6>
   <div class="people-feed-list">
     <p ng-repeat="p in ppl.feed">{{ p.name }}</p>

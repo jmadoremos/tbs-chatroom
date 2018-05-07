@@ -12,7 +12,7 @@ function SocketConfig() {
         mIsAdded = true;
 
         // inform other clients
-        socket.broadcast.emit('new-user', {
+        socket.broadcast.emit('add-user', {
           name: socket.name,
           email: socket.email,
           emailHash: socket.emailHash
@@ -69,6 +69,12 @@ function SocketConfig() {
     socket.on('disconnect', () => {
       if (mIsAdded) {
         mIsAdded = false;
+
+        socket.broadcast.emit('remove-user', {
+          name: socket.name,
+          email: socket.email,
+          emailHash: socket.emailHash
+        });
 
         // log
         console.log(chalk.green(`${socket.name} has disconnected`));

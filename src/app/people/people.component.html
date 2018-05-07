@@ -20,8 +20,9 @@
   </form>
 </div>
 <div class="people-feed">
+  <h6>Current users:</h6>
   <div class="people-feed-list">
-
+    <p ng-repeat="p in ppl.feed">{{ p.name }}</p>
   </div>
 </div>
 <div class="people-logs">&nbsp;</div>

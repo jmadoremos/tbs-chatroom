@@ -27,3 +27,13 @@ people-component .people-profile {
   margin-top: 10px;
   text-align: center;
 }
+
+.people-feed {
+  margin-top: 30px;
+}
+
+.people-feed-list p {
+  border-bottom: 1px #2e86de solid;
+  font-size: 12px;
+  margin-left: 12px;
+}

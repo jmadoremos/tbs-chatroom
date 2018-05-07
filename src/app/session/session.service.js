@@ -28,6 +28,16 @@
       $rootScope.$broadcast('stop-typing', { userPackage });
     });
 
+    socket.on('add-user', (data) => {
+      var userPackage = new UserDetails(data);
+      $rootScope.$broadcast('add-user', { userPackage });
+    });
+
+    socket.on('remove-user', (data) => {
+      var userPackage = new UserDetails(data);
+      $rootScope.$broadcast('remove-user', { userPackage });
+    });
+
     function setUserDetails (obj) {
       if (!mSessionStarted) {
         userDetails = new UserDetails(obj);

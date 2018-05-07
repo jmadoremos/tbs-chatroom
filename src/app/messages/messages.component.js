@@ -64,20 +64,33 @@
       $scope.$apply();
     });
 
+    function updateTypingMessage(obj) {
+      // handle parameters
+      if (typeof obj !== 'object' || obj === null) {
+        obj = {};
+      }
+      obj.user = obj.user || { name: 'anonymous' };
+      // process logic
+      if (msg.typingUsers === 1) {
+        msg.typingMessage = `${obj.user.name} is typing...`;
+      } else if (msg.typingUsers > 1) {
+        msg.typingMessage = `${msg.typingUsers} users are typing...`;
+      } else {
+        msg.typingMessage = '';
+      }
+    }
+
     $scope.$on('start-typing', (event, args) => {
       var user = args.userPackage;
       msg.typingUsers += 1;
-      if (msg.typingUsers === 1) {
-        msg.typingMessage = `${user.name} is typing...`;
-      } else {
-        msg.typingMessage = `${msg.typingUsers} users are typing...`;
-      }
+      updateTypingMessage({ user: user });
       $scope.$apply();
     });
 
-    $scope.$on('stop-typing', () => {
+    $scope.$on('stop-typing', (event, args) => {
+      var user = args.userPackage;
       msg.typingUsers = msg.typingUsers > 0 ? msg.typingUsers - 1 : 0;
-      msg.typingMessage = '';
+      updateTypingMessage({ user: user });
       $scope.$apply();
     });
 

@@ -7,23 +7,46 @@
     var ppl = this;
 
     // START: user details //
-    ppl.userName = sessionStorage.getItem('tbs-username') || '';
     ppl.userEmail = sessionStorage.getItem('tbs-email') || '';
     ppl.userEmailHash = sessionStorage.getItem('tbs-emailHash') || '';
     // END: user details //
 
-    ppl.feed = [];
+    ppl.userFeed = [];
+
+    function getIndexFromUserFeed(obj) {
+      if (typeof obj !== 'object' || obj === null) {
+        obj = {};
+      }
+      if (obj.email !== undefined) {
+        for(var i = 0; i < ppl.userFeed.length; i++) {
+          if (ppl.userFeed[i].email === obj.email) {
+            return i;
+          }
+        }
+        return -1;
+      }
+      return -1;
+    }
+
+    function addUserToFeed(obj) {
+      if (typeof obj !== 'object' || obj === null) {
+        obj = {};
+      }
+      if (obj.user !== undefined) {
+        var index = getIndexFromUserFeed({ email: obj.user.email });
+        if (index === -1) {
+          ppl.userFeed.push(obj.user);
+        }
+      }
+    }
 
     function removeUserFromFeed(obj) {
       if (typeof obj !== 'object' || obj === null) {
         obj = {};
       }
-      if (obj.user !== undefined) {
-        for(var i = 0; i < ppl.feed.length; i++) {
-          if (ppl.feed[i].name === obj.user.name) {
-            ppl.feed.splice(i, 1);
-          }
-        }
+      if (obj.email !== undefined) {
+        var index = getIndexFromUserFeed({ email: obj.email });
+        ppl.userFeed.splice(index, 1);
       }
     }
 
@@ -31,7 +54,7 @@
       $rootScope.$broadcast('disconnect');
       SessionService.clearUserDetails();
 
-      removeUserFromFeed({ user: { name: ppl.userName }});
+      removeUserFromFeed({ email: ppl.userEmail });
       sessionStorage.clear();
     };
 
@@ -39,11 +62,10 @@
       ppl.userEmail = ppl.userEmail.trim().toLocaleLowerCase();
       if (ppl.userEmail !== '') {
         ppl.userEmailHash = md5.createHash(ppl.userEmail);
-        var user = new UserDetails({ name: ppl.userName, email: ppl.userEmail, emailHash: ppl.userEmailHash });
-        SessionService.setUserDetails(user);
-        ppl.feed.push(user);
+        var user = new UserDetails({ email: ppl.userEmail, emailHash: ppl.userEmailHash });
+        SessionService.setUserDetails({ user: user });
+        addUserToFeed({ user: user });
 
-        sessionStorage.setItem('tbs-username', ppl.userName);
         sessionStorage.setItem('tbs-email', ppl.userEmail);
         sessionStorage.setItem('tbs-emailHash', ppl.userEmailHash);
       }
@@ -59,7 +81,7 @@
 
     $scope.$on('add-user', (event, args) => {
       var user = args.userPackage;
-      ppl.feed.push(user);
+      ppl.userFeed.push(user);
       $scope.$apply();
     });
 

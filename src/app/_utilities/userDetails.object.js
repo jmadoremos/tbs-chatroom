@@ -24,7 +24,6 @@
     // "new UserDetails()" constructor
     var UserDetails = function(obj) {
       obj = mValidateParam(obj);
-      this.name = mValidateArg(obj.name, 'anonymous');
       this.email = mValidateArg(obj.email, '');
       this.emailHash = mValidateArg(obj.emailHash, '');
       this.message = '';
@@ -33,7 +32,6 @@
 
     // "UserDetails.empty()" function
     UserDetails.prototype.empty = function () {
-      this.name = '';
       this.email = '';
       this.emailHash = '';
       this.message = '';

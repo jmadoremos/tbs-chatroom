@@ -3,16 +3,12 @@
     <div class="people-profile-header">
       <img src="https://www.gravatar.com/avatar/{{ppl.userEmailHash}}" alt="profile" class="rounded-circle mx-auto d-block" />
     </div>
-    <div class="people-profile-name">{{ppl.userName}} (<a href="#" ng-click="ppl.clearUserDetails()">logout</a>)</div>
+    <div class="people-profile-name">{{ppl.userEmail}} (<a href="#" ng-click="ppl.clearUserDetails()">logout</a>)</div>
   </div>
   <form ng-if="!ppl.isLoggedIn()">
     <div class="form-group">
-      <label for="peopleFieldName" class="bmd-label-floating">Name</label>
-      <input type="text" class="form-control" id="peopleFieldName" ng-model="ppl.userName">
-    </div>
-    <div class="form-group">
       <label for="peopleFieldEmail" class="bmd-label-floating">Email</label>
-      <input type="text" class="form-control" id="peopleFieldEmail" ng-model="ppl.userEmail">
+      <input type="email" class="form-control" id="peopleFieldEmail" ng-model="ppl.userEmail" ng-required="true">
     </div>
     <div class="form-group">
         <button type="button" class="btn btn-raised btn-primary" ng-click="ppl.setUserDetails()">Login</button>
@@ -22,7 +18,7 @@
 <div class="people-feed" ng-show="ppl.feed.length > 0">
   <h6>Current users:</h6>
   <div class="people-feed-list">
-    <p ng-repeat="p in ppl.feed">{{ p.name }}</p>
+    <p ng-repeat="p in ppl.userFeed">{{ p.email }}</p>
   </div>
 </div>
 <div class="people-logs">&nbsp;</div>

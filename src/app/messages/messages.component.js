@@ -32,7 +32,7 @@
     msg.submitMessage = function () {
       if (SessionService.isLoggedIn()) {
         var userDetails = SessionService.user();
-        var message = new Message({ name: userDetails.name, emailHash: userDetails.emailHash, message: msg.fieldValue });
+        var message = new Message({ name: userDetails.email, emailHash: userDetails.emailHash, message: msg.fieldValue });
         msg.fieldValue = '';
         SessionService.sendMessage(message);
         addMessage(message);
@@ -69,10 +69,10 @@
       if (typeof obj !== 'object' || obj === null) {
         obj = {};
       }
-      obj.user = obj.user || { name: 'anonymous' };
+      obj.email = obj.email || { name: 'anonymous' };
       // process logic
       if (msg.typingUsers === 1) {
-        msg.typingMessage = `${obj.user.name} is typing...`;
+        msg.typingMessage = `${obj.user.email} is typing...`;
       } else if (msg.typingUsers > 1) {
         msg.typingMessage = `${msg.typingUsers} users are typing...`;
       } else {

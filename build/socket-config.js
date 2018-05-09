@@ -6,20 +6,18 @@ function SocketConfig() {
 
     socket.on('set-user', (obj) => {
       if (!mIsAdded) {
-        socket.name = obj.name;
         socket.email = obj.email;
         socket.emailHash = obj.emailHash;
         mIsAdded = true;
 
         // inform other clients
         socket.broadcast.emit('add-user', {
-          name: socket.name,
           email: socket.email,
           emailHash: socket.emailHash
         });
 
         // log
-        console.log(chalk.green(`${socket.name} has connected`));
+        console.log(chalk.green(`${socket.email} has connected`));
       }
     });
 
@@ -27,14 +25,13 @@ function SocketConfig() {
       if (mIsAdded) {
         // inform other clients
         socket.broadcast.emit('new-message', {
-          name: socket.name,
           email: socket.email,
           emailHash: socket.emailHash,
           message: obj.message
         });
 
         // log
-        console.log(chalk.green(`${socket.name} has sent a message "${obj.message}"`));
+        console.log(chalk.green(`${socket.email} has sent a message "${obj.message}"`));
       }
     });
 
@@ -42,13 +39,12 @@ function SocketConfig() {
       if (mIsAdded) {
         // inform other clients
         socket.broadcast.emit('start-typing', {
-          name: socket.name,
           email: socket.email,
           emailHash: socket.emailHash
         });
 
         // log
-        console.log(chalk.green(`${socket.name} is typing...`));
+        console.log(chalk.green(`${socket.email} is typing...`));
       }
     });
 
@@ -56,7 +52,6 @@ function SocketConfig() {
       if (mIsAdded) {
         // inform other clients
         socket.broadcast.emit('stop-typing', {
-          name: socket.name,
           email: socket.email,
           emailHash: socket.emailHash
         });
@@ -71,13 +66,12 @@ function SocketConfig() {
         mIsAdded = false;
 
         socket.broadcast.emit('remove-user', {
-          name: socket.name,
           email: socket.email,
           emailHash: socket.emailHash
         });
 
         // log
-        console.log(chalk.green(`${socket.name} has disconnected`));
+        console.log(chalk.green(`${socket.email} has disconnected`));
       }
     });
   }

@@ -38,6 +38,11 @@
       $rootScope.$broadcast('remove-user', { userPackage });
     });
 
+    socket.on('set-userFeed', (data) =>{
+      var userFeed = data.userFeed;
+      $rootScope.$broadcast('set-userFeed', { userFeed });
+    });
+
     function setUserDetails (obj) {
       if (!mSessionStarted) {
         userDetails = new UserDetails(obj);

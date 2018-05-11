@@ -8,7 +8,7 @@
     "deploy-down": "now rm TheBibiSeries",
     "lint": "esw webpack.config.* src build --color",
     "lint:watch": "npm run lint -- --watch",
-    "start": "npm-run-all --parallel test-security lint:watch test start-server",
+    "start": "npm-run-all --parallel lint:watch test start-server",
     "start-server": "babel-node build/server-start.js",
     "test": "mocha build/test-config.js \"src/**/*.spec.js\"",
     "test:watch": "npm run test -- --watch",

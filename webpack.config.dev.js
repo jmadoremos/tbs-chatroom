@@ -1,6 +1,6 @@
 import path from 'path';
 
-export default {
+module.exports = {
   entry: './src/app/app.bundleConfig.js',
   target: 'node',
   mode: 'development',
@@ -10,13 +10,16 @@ export default {
     publicPath: '/'
   },
   module: {
-    rules: [{
-      test: /\.css$/,
-      use: ['style-loader', 'css-loader']
-    }, {
-      test: /\.js$/,
-      use: ['babel-loader'],
-      exclude: /node_modules/
-    }]
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.js$/,
+        use: ['babel-loader'],
+        exclude: /node_modules/
+      }
+    ]
   }
 };

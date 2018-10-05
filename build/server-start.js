@@ -1,7 +1,6 @@
 import express from 'express';
 import socketIO from 'socket.io';
 import http from 'http';
-import open from 'open';
 import webpack from 'webpack';
 import config from '../webpack.config.dev';
 import compression from 'compression';
@@ -43,6 +42,5 @@ server.listen(port, (err) => {
     console.log(chalk.red(err));
   } else {
     console.log(chalk.yellow(`Running a new process at ${pid}`));
-    open(`http://localhost:${port}`);
   }
 });
